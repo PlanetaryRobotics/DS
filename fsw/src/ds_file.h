@@ -33,6 +33,10 @@
 #define _ds_file_h_
 
 #include "cfe.h"
+#include <libgen.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #include "ds_platform_cfg.h"
 
@@ -89,6 +93,7 @@ typedef struct
 */
 void DS_FileStorePacket(CFE_SB_MsgId_t MessageID, CFE_SB_MsgPtr_t MessagePtr);
 
+void prepend(char* s, const char* t);
 
 /*******************************************************************/
 /*  \brief Prepare to write to a data storage destination file

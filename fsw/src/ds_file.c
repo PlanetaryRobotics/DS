@@ -353,6 +353,12 @@ void DS_FileWriteError(uint32 FileIndex, uint32 DataLength, int32 WriteResult)
 
 } /* End of DS_FileWriteError() */
 
+void prepend(char* s, const char* t)
+{
+    size_t len = strlen(t);
+    memmove(s + len, s, strlen(s) + 1);
+    memcpy(s, t, len);
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 /*                                                                 */
@@ -372,6 +378,23 @@ void DS_FileCreateDest(uint32 FileIndex)
 
     if (FileStatus->FileName[0] != DS_STRING_TERMINATOR)
     {
+
+        char* log_dir_path = dirname(strdup(FileStatus->FileName));
+        printf("LDP : %s \n", log_dir_path);
+
+        /// We need to create the logging base directory if it doesn't exist
+        struct stat st = {0};
+
+         if (stat(log_dir_path, &st) == -1) {
+
+            char* target_dir = malloc(strlen(log_dir_path+1));
+            strcpy(target_dir, log_dir_path);
+            prepend(target_dir, ".");
+            mkdir(target_dir, 0700);
+            CFE_EVS_SendEvent(DS_CREATE_FILE_ERR_EID, CFE_EVS_EventType_ERROR,
+                             ": msgpath='%s' dirname='%s'", FileStatus->FileName, target_dir);
+        }
+
         /*
         ** Success - create a new destination file...
         */
@@ -385,8 +408,8 @@ void DS_FileCreateDest(uint32 FileIndex)
             DS_AppData.FileWriteErrCounter++;
 
             CFE_EVS_SendEvent(DS_CREATE_FILE_ERR_EID, CFE_EVS_EventType_ERROR,
-                             "FILE CREATE error: result = %d, dest = %d, name = '%s'",
-                              (int)Result, (int)FileIndex, FileStatus->FileName);
+                             "FILE CREATE error: result = %d, dest = %d, name = '%s' basename='%s'",
+                              (int)Result, (int)FileIndex, FileStatus->FileName, dirname(FileStatus->FileName));
 
             CFE_PSP_MemSet(FileStatus->FileName, 0, DS_TOTAL_FNAME_BUFSIZE);
 
