@@ -6,7 +6,7 @@ include_directories(fsw/platform_inc)
 include_directories(${cfs_lib_MISSION_DIR}/fsw/public_inc)
 include_directories(fsw/src)
 include_directories(${moonranger_msgs_MISSION_DIR}/fsw/public_inc)
-
+include_directories(${hs_MISSION_DIR}/fsw/src) 
 
 aux_source_directory(fsw/src APP_SRC_FILES)
 aux_source_directory(fsw/tables APP_TABLE_FILES)

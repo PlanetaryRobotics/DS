@@ -45,6 +45,9 @@
 #include "ds_msgdefs.h"
 #include "ds_version.h"
 
+#include "moonranger_msgids.h"
+#include "hs_msgdefs.h"
+
 #include "string.h"
 
 
@@ -267,6 +270,14 @@ int32 DS_AppInitialize(void)
     {
         Result = DS_TableCreateCDS();
     }
+
+    //register with HS app to make sure this app gets automatically restarted
+    //when it crashes
+    CFE_SB_CmdHdr_t EnableHs;
+    CFE_SB_InitMsg(&EnableHs, HS_CMD_MID, sizeof(CFE_SB_CmdHdr_t),true);
+    CFE_SB_SetCmdCode((CFE_SB_Msg_t *)&EnableHs, HS_ENABLE_APPMON_CC);
+    CFE_SB_GenerateChecksum((CFE_SB_Msg_t*) &EnableHs);
+    CFE_SB_SendMsg((CFE_SB_Msg_t*)&EnableHs);
 
     /*
     ** Generate application startup event message...
