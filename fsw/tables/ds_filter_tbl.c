@@ -83,7 +83,7 @@
 #define FILE_CFE_APP_HK_PKTS  4
 #define FILE_CFE_APP_TLM_PKTS 5
 #define MOONRANGER_DEBUG_FILE_INDEX 14
-#define MOONRANGER_DEBUG_FILE_INDEX 15
+#define MOONRANGER_NOMINAL_FILE_INDEX 15
 
 /*
 ** Sample packet filter table data
