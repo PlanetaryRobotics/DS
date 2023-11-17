@@ -379,21 +379,21 @@ void DS_FileCreateDest(uint32 FileIndex)
     if (FileStatus->FileName[0] != DS_STRING_TERMINATOR)
     {
 
-        char* log_dir_path = dirname(strdup(FileStatus->FileName));
-        printf("LDP : %s \n", log_dir_path);
+        // char* log_dir_path = dirname(strdup(FileStatus->FileName));
+        // printf("LDP : %s \n", log_dir_path);
 
-        /// We need to create the logging base directory if it doesn't exist
-        struct stat st = {0};
+        // /// We need to create the logging base directory if it doesn't exist
+        // struct stat st = {0};
 
-         if (stat(log_dir_path, &st) == -1) {
+        //  if (stat(log_dir_path, &st) == -1) {
 
-            char* target_dir = malloc(strlen(log_dir_path+1));
-            strcpy(target_dir, log_dir_path);
-            prepend(target_dir, ".");
-            mkdir(target_dir, 0700);
-            CFE_EVS_SendEvent(DS_CREATE_FILE_ERR_EID, CFE_EVS_EventType_ERROR,
-                             ": msgpath='%s' dirname='%s'", FileStatus->FileName, target_dir);
-        }
+        //     char* target_dir = malloc(strlen(log_dir_path+1));
+        //     strcpy(target_dir, log_dir_path);
+        //     prepend(target_dir, ".");
+        //     mkdir(target_dir, 0700);
+        //     CFE_EVS_SendEvent(DS_CREATE_FILE_ERR_EID, CFE_EVS_EventType_ERROR,
+        //                      ": msgpath='%s' dirname='%s'", FileStatus->FileName, target_dir);
+        // }
 
         /*
         ** Success - create a new destination file...
