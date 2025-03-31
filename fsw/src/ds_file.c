@@ -657,6 +657,8 @@ void DS_FileCreateSequence(char *Buffer, uint32 Type, uint32 Count)
 
         /*
         ** DS time string has format: "YYYYDDDHHMMSS"...
+
+        CONSIDER: TO ONLY KEEP 1 DIGIT OF YEAR (TRAILING DIGIT i.e., YDDDHHMMSS)
         */
         #define DS_YYYY_INDEX  0
         #define DS_DDD_INDEX   4
