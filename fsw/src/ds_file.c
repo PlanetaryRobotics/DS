@@ -379,17 +379,21 @@ void DS_FileCreateDest(uint32 FileIndex)
     if (FileStatus->FileName[0] != DS_STRING_TERMINATOR)
     {
 
-        char* log_dir_path = dirname(strdup(FileStatus->FileName));
+        char log_dir_path[DS_TOTAL_FNAME_BUFSIZE];
+        char file_name_copy[DS_TOTAL_FNAME_BUFSIZE];
+        strncpy(file_name_copy, FileStatus->FileName, DS_TOTAL_FNAME_BUFSIZE-1);
+        file_name_copy[DS_TOTAL_FNAME_BUFSIZE-1]=DS_STRING_TERMINATOR;
+        strncpy(log_dir_path, dirname(file_name_copy), DS_TOTAL_FNAME_BUFSIZE-1);
+        log_dir_path[DS_TOTAL_FNAME_BUFSIZE-1]=DS_STRING_TERMINATOR;
         printf("LDP : %s \n", log_dir_path);
 
         /// We need to create the logging base directory if it doesn't exist
         struct stat st = {0};
 
-         if (stat(log_dir_path, &st) == -1) {
+        if (stat(log_dir_path, &st) == -1) {
 
-            char* target_dir = malloc(strlen(log_dir_path+1));
-            strcpy(target_dir, log_dir_path);
-            prepend(target_dir, ".");
+            char target_dir[DS_TOTAL_FNAME_BUFSIZE];
+            snprintf(target_dir, DS_TOTAL_FNAME_BUFSIZE, ".%s", log_dir_path);
             mkdir(target_dir, 0700);
             CFE_EVS_SendEvent(DS_CREATE_FILE_ERR_EID, CFE_EVS_EventType_ERROR,
                              ": msgpath='%s' dirname='%s'", FileStatus->FileName, target_dir);
