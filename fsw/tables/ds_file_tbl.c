@@ -169,20 +169,20 @@ DS_DestFileTable_t DS_DestFileTable =
       /* .MaxFileAge    = */ (60 * 60 * 2),             /* 2 hours */
       /* .SequenceCount = */ 5000,
     },
-    /* File Index 06 */
+    /* File Index 06 -- NSS processed data */
     {
 #if (DS_MOVE_FILES == TRUE)
       /* .Movename      = */ DS_EMPTY_STRING,
 #endif
-      /* .Pathname      = */ DS_EMPTY_STRING,
-      /* .Basename      = */ DS_EMPTY_STRING,
-      /* .Extension     = */ DS_EMPTY_STRING,
+      /* .Pathname      = */ "/cf",
+      /* .Basename      = */ "nss",
+      /* .Extension     = */ "dat",
 
-      /* .FileNameType  = */ DS_UNUSED,
-      /* .EnableState   = */ DS_UNUSED,
-      /* .MaxFileSize   = */ DS_UNUSED,
-      /* .MaxFileAge    = */ DS_UNUSED,
-      /* .SequenceCount = */ DS_UNUSED,
+      /* .FileNameType  = */ DS_BY_TIME,
+      /* .EnableState   = */ DS_ENABLED,
+      /* .MaxFileSize   = */ (1024 * 1024 * 10),         /* 10 M-bytes */
+      /* .MaxFileAge    = */ (60 * 60 * 24),             /* 24 hours */
+      /* .SequenceCount = */ 1000,
     },
     /* File Index 07 */
     {

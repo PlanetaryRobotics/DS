@@ -84,6 +84,7 @@
 #define FILE_CFE_APP_TLM_PKTS 5
 #define MOONRANGER_DEBUG_FILE_INDEX 14
 #define MOONRANGER_NOMINAL_FILE_INDEX 15
+#define FILE_NSS_DATA_INDEX 6
 
 /*
 ** Sample packet filter table data
@@ -1102,11 +1103,11 @@ DS_FilterTable_t DS_FilterTable =
     },
     /* Packet Index 084 */
     {
-      /* .MessageID = */ DS_UNUSED,
+      /* .MessageID = */ NSS_PROCESSED_TLM_MID,
       /* .Filter    = */
       {
         /* File table index, filter type, N, X, O */
-        { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED },
+        { FILE_NSS_DATA_INDEX, DS_BY_COUNT, 1, 1, 0 },
         { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED },
         { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED },
         { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED }
