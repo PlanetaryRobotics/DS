@@ -176,7 +176,7 @@ DS_DestFileTable_t DS_DestFileTable =
 #endif
       /* .Pathname      = */ "/cf",
       /* .Basename      = */ "nss",
-      /* .Extension     = */ "dat",
+      /* .Extension     = */ "tlm",
 
       /* .FileNameType  = */ DS_BY_TIME,
       /* .EnableState   = */ DS_ENABLED,

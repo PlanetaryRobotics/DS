@@ -82,6 +82,7 @@
 
 #define FILE_CFE_APP_HK_PKTS  4
 #define FILE_CFE_APP_TLM_PKTS 5
+#define MOONRANGER_NSS_FILE_INDEX 6
 #define MOONRANGER_DEBUG_FILE_INDEX 14
 #define MOONRANGER_NOMINAL_FILE_INDEX 15
 #define FILE_NSS_DATA_INDEX 6
@@ -1107,7 +1108,7 @@ DS_FilterTable_t DS_FilterTable =
       /* .Filter    = */
       {
         /* File table index, filter type, N, X, O */
-        { FILE_NSS_DATA_INDEX, DS_BY_COUNT, 1, 1, 0 },
+        { MOONRANGER_NSS_FILE_INDEX, DS_BY_COUNT, 1, 1, 0 },
         { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED },
         { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED },
         { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED }
