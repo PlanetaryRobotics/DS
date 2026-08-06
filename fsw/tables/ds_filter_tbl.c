@@ -719,7 +719,7 @@ DS_FilterTable_t DS_FilterTable =
     },
     /* Packet Index 052 */
     {
-      /* .MessageID = */ FTP_CONTROL,
+      /* .MessageID = */ FTP_INIT,
       /* .Filter    = */
       {
         /* File table index, filter type, N, X, O */
@@ -731,7 +731,7 @@ DS_FilterTable_t DS_FilterTable =
     },
     /* Packet Index 053 */
     {
-      /* .MessageID = */ FTP_SEND_ALL,
+      /* .MessageID = */ FTP_CONTROL,
       /* .Filter    = */
       {
         /* File table index, filter type, N, X, O */
@@ -754,18 +754,6 @@ DS_FilterTable_t DS_FilterTable =
       }
     },
     /* Packet Index 055 */
-    {
-      /* .MessageID = */ FTP_INIT,
-      /* .Filter    = */
-      {
-        /* File table index, filter type, N, X, O */
-        { MOONRANGER_NOMINAL_FILE_INDEX, DS_BY_COUNT, 1, 1, 0 },
-        { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED },
-        { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED },
-        { DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED, DS_UNUSED }
-      }
-    },
-    /* Packet Index 056 */
     {
       /* .MessageID = */ MOONRANGER_GOAL_MID,
       /* .Filter    = */
